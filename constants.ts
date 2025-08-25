@@ -1,0 +1,97 @@
+
+import { Client, Training, ClientStatus, TrainingType, TrainingStatus } from './types';
+
+export const STATUS_COLORS: Record<TrainingStatus, string> = {
+  [TrainingStatus.SCHEDULED]: 'bg-blue-100 text-blue-800',
+  [TrainingStatus.IN_PROGRESS]: 'bg-yellow-100 text-yellow-800',
+  [TrainingStatus.RESCHEDULED]: 'bg-purple-100 text-purple-800',
+  [TrainingStatus.CANCELED]: 'bg-red-100 text-red-800',
+  [TrainingStatus.COMPLETED]: 'bg-green-100 text-green-800',
+};
+
+export const MOCK_CLIENTS: Client[] = [
+  {
+    id: '1',
+    businessName: 'Innovatech Solutions S.A.',
+    tradeName: 'Innovatech',
+    status: ClientStatus.ACTIVE,
+    industry: 'Tecnología',
+    connectionType: 'API',
+    contractType: 'Premium',
+    registrationDate: '2023-01-15',
+    estimatedProductionDate: '2023-03-01',
+    actualProductionDate: '2023-03-05',
+    licenses: 50,
+    observations: 'Cliente estratégico, alto potencial de crecimiento.',
+  },
+  {
+    id: '2',
+    businessName: 'Comercializadora Global Ltda.',
+    tradeName: 'Global Market',
+    status: ClientStatus.INACTIVE,
+    industry: 'Retail',
+    connectionType: 'Manual',
+    contractType: 'Básico',
+    registrationDate: '2022-11-20',
+    estimatedProductionDate: '2023-01-10',
+    licenses: 10,
+    observations: 'Cliente pausó operaciones temporalmente.',
+  },
+  {
+    id: '3',
+    businessName: 'Logística Rápida y Segura S.R.L.',
+    tradeName: 'LogiFast',
+    status: ClientStatus.FROZEN,
+    industry: 'Transporte',
+    connectionType: 'EDI',
+    contractType: 'Estándar',
+    registrationDate: '2023-05-10',
+    estimatedProductionDate: '2023-07-01',
+    licenses: 25,
+    observations: 'Cuenta congelada por falta de pago.',
+    frozenInfo: 'Congelado desde 2023-09-01. Contactar a finanzas.',
+  },
+];
+
+export const MOCK_TRAININGS: Training[] = [
+  {
+    id: 't1',
+    clientId: '1',
+    clientName: 'Innovatech',
+    type: TrainingType.PM,
+    status: TrainingStatus.COMPLETED,
+    scheduledDate: '2023-02-20',
+    assignedTo: 'Ana Gómez',
+    details: 'Configuración inicial y usuarios avanzados.',
+  },
+  {
+    id: 't2',
+    clientId: '1',
+    clientName: 'Innovatech',
+    type: TrainingType.GENERAL,
+    status: TrainingStatus.SCHEDULED,
+    scheduledDate: '2024-08-15',
+    assignedTo: 'Carlos Ruiz',
+    details: 'Capacitación sobre nuevo módulo de inventario.',
+  },
+  {
+    id: 't3',
+    clientId: '3',
+    clientName: 'LogiFast',
+    type: TrainingType.GENERAL,
+    status: TrainingStatus.IN_PROGRESS,
+    scheduledDate: '2024-07-25',
+    assignedTo: 'Laura Paz',
+    details: 'Uso básico del sistema y gestión de ventas.',
+  },
+   {
+    id: 't4',
+    clientId: '1',
+    clientName: 'Innovatech',
+    type: TrainingType.PM,
+    status: TrainingStatus.CANCELED,
+    scheduledDate: '2024-06-10',
+    assignedTo: 'Ana Gómez',
+    details: 'Generación de reportes específicos del sistema. Cancelada por el cliente.',
+  },
+];

@@ -1,0 +1,5 @@
+{
+  "name": "PM Client Management System",
+  "description": "A web application to manage clients and their training sessions, with AI-powered strategic summaries for enhanced client relationship management.",
+  "requestFramePermissions": []
+}
