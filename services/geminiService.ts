@@ -1,17 +1,17 @@
-
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { Client } from '../types';
 
 const API_KEY = process.env.API_KEY;
+let ai: GoogleGenAI | null = null;
 
-if (!API_KEY) {
+if (API_KEY) {
+  ai = new GoogleGenAI({ apiKey: API_KEY });
+} else {
   console.warn("API_KEY environment variable not set. Gemini API features will be disabled.");
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY! });
-
 export const generateClientSummary = async (client: Client): Promise<string> => {
-  if (!API_KEY) {
+  if (!ai) {
     return "Error: La clave de API de Gemini no está configurada. Por favor, configure la variable de entorno API_KEY.";
   }
   
